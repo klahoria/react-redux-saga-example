@@ -1,0 +1,26 @@
+.container__nav {
+    background-color: var(--nav-bg);
+    min-width: 249px;
+    max-width: 249px;
+}
+
+.nav_link_text {
+    color: var(--nav-text)
+}
+
+.active_link {
+    background-color: var(--nav-bg-light);
+}
+
+
+.submenu > .nav_menu >.nav_link_text {
+    background-color: transparent !important;
+}
+.nav-link {
+    margin-bottom: 3px;
+}
+
+.nav-link:hover,
+.submenu > .nav_menu >.nav_link_text:hover {
+    background-color: var(--nav-bg) !important;
+}

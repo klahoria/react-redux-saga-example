@@ -1,0 +1,10 @@
+:root {
+  --nav-bg: #050B13;
+  --nav-text: #A8B7C6;
+  --nav-bg-light: #93c5fd80;
+}
+
+
+.bg-none {
+  background-color: transparent !important;
+}

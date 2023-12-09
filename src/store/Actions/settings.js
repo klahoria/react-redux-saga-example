@@ -1,0 +1,1 @@
+export const GET_SETTINGS = (data) => ({ type: 'get_settings' });
