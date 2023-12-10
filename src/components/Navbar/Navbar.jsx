@@ -24,7 +24,7 @@ Navbar.propTypes = {
     login: PropTypes.object
 }
 
-const mapStateToProps = (state) => (console.log(state.Login), {
+const mapStateToProps = (state) => ({
     login: state.Login
 })
 
@@ -39,7 +39,7 @@ function NavLinks({ login }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log(location)
+        // console.log(location)
     }, [])
 
     function showThisMenu(item) {

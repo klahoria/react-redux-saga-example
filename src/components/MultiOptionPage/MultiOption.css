@@ -1,0 +1,63 @@
+.notification-bell {
+  position: relative;
+  display: inline-block;
+}
+
+.notification-badge {
+  position: absolute;
+  background: red;
+  border-radius: 50% !important;
+  right: -6px;
+  top: -6px;
+}
+
+
+.notification-bell:hover {
+  border-radius: 50px;
+  /* background-color: #cacaca; */
+  filter: drop-shadow(2px 2px 1px black)
+}
+
+
+
+/* Card component */
+
+.grow_animation {
+  width: 100%;
+  height: 1px;
+  /* display: none; */
+  transform-origin: bottom;
+  /* transform: scalex(1); */
+  visibility: hidden;
+  /* Initial scale is 100% on the y-axis */
+  transition: transform 0.5s ease;
+}
+
+.card:hover .grow_animation {
+  /* transform: scalex(200); */
+  visibility: visible;
+  transform: scaleY(12);
+}
+
+
+.card {
+  transform-origin: bottom;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.06);
+  transition: transform 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.card:hover {
+  box-shadow: 9px 16px 20px rgba(0, 0, 0, 0.09);
+  transform: translateY(-15px) !important
+}
+
+
+@keyframes growfrom {
+  0% {
+    width: 0px;
+  }
+
+  100% {
+    width: 100%;
+  }
+}

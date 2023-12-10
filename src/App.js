@@ -5,17 +5,15 @@ import { increment, decrement, login } from './store/Actions/Actions';
 import { GET_SETTINGS } from './store/Actions/settings'
 import { Button, Form } from 'react-bootstrap';
 import Navbar from './components/Navbar/Navbar';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import MultiOptoinPage from './components/MultiOptionPage/MultiOptoinPage';
+import BaseRoute from './components/BaseRoute/BaseRoute';
 
 function App() {
 
   // const { Login } = useSelector(data => data)
   const dispatch = useDispatch();
   const [creds, SetCeds] = useState({});
-
-  useEffect(() => {
-    // Dispatch the action to trigger the Redux Saga
-    GET_SETTINGS();
-  }, []);
 
   // function getValues(values) {
   //   let data = new FormData(values);
@@ -34,7 +32,7 @@ function App() {
 
   return (
     <div className='container-fluid px-0 vh-100'>
-      <div className='d-flex h-100'>
+      {/* <div className='d-flex h-100'>
         <div className=" px-0">
           <Navbar />
         </div>
@@ -59,6 +57,18 @@ function App() {
               Submit
             </Button>
           </Form>
+        </div>
+      </div> */}
+
+      <div className='d-flex h-100'>
+        <div className=" px-0">
+          <Navbar />
+        </div>
+        <div className="flex-grow-1">
+          <Routes>
+            <Route path='/' element={<Navigate to="/app/finance-customer" replace={true} />} />
+            <Route path={'/app/finance-customer'} element={<MultiOptoinPage />} />
+          </Routes>
         </div>
       </div>
     </div>

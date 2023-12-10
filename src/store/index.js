@@ -4,6 +4,7 @@ import createSagaMiddleware from 'redux-saga';
 import counterReducer from './Reducers/Reducer';
 import GetSettings from './Reducers/SettingsReducer';
 import Login from './Reducers/Login';
+import Finance from './Reducers/Finance';
 import storage from 'redux-persist/lib/storage';
 import { persistStore, persistReducer } from 'redux-persist';
 import rootSaga from './Saga/index';
@@ -16,7 +17,7 @@ const persistConfig = {
 };
 
 
-const persistedReducer = persistReducer(persistConfig, combineReducers({ counterReducer, getSettings: GetSettings, Login}));
+const persistedReducer = persistReducer(persistConfig, combineReducers({ counterReducer, getSettings: GetSettings, Login, Finance}));
 
 const store = createStore(
   persistedReducer,
