@@ -65,10 +65,11 @@ function App() {
           <Navbar />
         </div>
         <div className="flex-grow-1">
-          <Routes>
+          <MultiOptoinPage />
+          {/* <Routes>
             <Route path='/' element={<Navigate to="/app/finance-customer" replace={true} />} />
             <Route path={'/app/finance-customer'} element={<MultiOptoinPage />} />
-          </Routes>
+          </Routes> */}
         </div>
       </div>
     </div>

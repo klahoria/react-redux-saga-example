@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 import { ListGroup } from 'react-bootstrap'
 import { connect } from 'react-redux'
@@ -19,10 +18,6 @@ export const Navbar = ({ login }) => {
     )
 }
 
-Navbar.propTypes = {
-    //   second: PropTypes.third
-    login: PropTypes.object
-}
 
 const mapStateToProps = (state) => ({
     login: state.Login
@@ -77,7 +72,7 @@ function NavLinks({ login }) {
                             {item.menu_name}
                         </div>
                         {item && item.submenu && <div className="ps-3 submenu">
-                            {item && item.submenu && (item.link === url) && <NavLinks login={item.submenu} extraClass="d-none" />}
+                            {item && item.submenu && (item.link === url) && <NavLinks login={item.submenu} extraclassName="d-none" />}
                         </div>}
                     </ListGroup>
                 )

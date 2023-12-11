@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { CiBellOn } from "react-icons/ci";
 import './MultiOption.css'
 import { useNavigate } from 'react-router-dom';
+import { Finance } from '../../store/Actions/Finance';
 
 function MultiOptoinPage() {
 
@@ -46,6 +47,15 @@ function MultiOptoinPage() {
         navigate(url, { replace: false })
     }
     
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+        try {
+            setTimeout(()=>dispatch(Finance()),3000)
+        } catch (error) {
+            console.log(error)
+        }
+    },[])
 
     return (
         <div className='container-fluid'>
@@ -55,11 +65,11 @@ function MultiOptoinPage() {
                         <div className="fs-4 fw-bold col flex-grow-1">Welcome, {userInfo.profile[0].doctor_first_name + " " + userInfo.profile[0].doctor_last_name}</div>
                         <div className="col text-end">
                             <div className="px-4">
-                                <span class="notification-bell" role='button'>
-                                    {/* <button type="button" class="btn btn-primary"> */}
+                                <span className="notification-bell" role='button'>
+                                    {/* <button type="button" className="btn btn-primary"> */}
                                     <CiBellOn className='fs-2' role='' />
                                     {/* </button> */}
-                                    <span class="badge badge-danger notification-badge">3</span>
+                                    <span className="badge badge-danger notification-badge">3</span>
                                 </span>
                             </div>
                         </div>
@@ -72,7 +82,7 @@ function MultiOptoinPage() {
                     <h2 className='fw-bold pb-4'>Choose what you would like to do?</h2>
                     <div className="d-flex w-100 justify-content-lg-between justify-content-center flex-wrap mt-5" >
                         {card.map(item => (
-                            <div className="card position-relative mx-3 mb-3 justify-content-between overflow-hidden" role='button' style={{ maxWidth: "380px", width: "100%", minHeight: '430px' }} onClick={() => handleClick(item.url)}>
+                            <div key={item.url} className="card position-relative mx-3 mb-3 justify-content-between overflow-hidden" role='button' style={{ maxWidth: "380px", width: "100%", minHeight: '430px' }} onClick={() => handleClick(item.url)}>
                                 <div className='p-3' >
                                     <img src={item.img} alt={item.img} className='mt-4' style={{ maxWidth: "120px" }} />
                                     <h2 className="fw_bolder mt-4 pt-2" style={{ minHeight: "85px" }}>{item.title}</h2>
@@ -81,7 +91,7 @@ function MultiOptoinPage() {
                                 <div className="box_learnMore px-3">
                                     <a href='http://google.com' onClick={(e) => e.stopPropagation()} target='_blank' className="text-primary">Learn More</a>
                                 </div>
-                                <div class="grow_animation" style={{
+                                <div className="grow_animation" style={{
                                     background: item.color
                                 }}></div>
                             </div>

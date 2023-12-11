@@ -8,7 +8,7 @@ import Finance from './Reducers/Finance';
 import storage from 'redux-persist/lib/storage';
 import { persistStore, persistReducer } from 'redux-persist';
 import rootSaga from './Saga/index';
-
+import logger from 'redux-logger';
 const sagaMiddleware = createSagaMiddleware();
 
 const persistConfig = {
