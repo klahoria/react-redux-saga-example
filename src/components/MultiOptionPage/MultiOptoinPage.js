@@ -44,21 +44,24 @@ function MultiOptoinPage() {
 
     const navigate = useNavigate();
     function handleClick(url) {
+
         navigate(url, { replace: false })
     }
-    
-    const dispatch = useDispatch()
 
-    useEffect(()=>{
+    const dispatch = useDispatch()
+    const doctorId = useSelector(data => data.Login)
+
+    useEffect(() => {
         try {
-            setTimeout(()=>dispatch(Finance()),3000)
+            let doctor_id = doctorId.profile[0].doctor_id
+            dispatch(Finance({ payload: { doctor_id } }))
         } catch (error) {
             console.log(error)
         }
-    },[])
+    }, [])
 
     return (
-        <div className='container-fluid'>
+        <div className='container-fluid h-100' style={{backgroundColor: '#fafafa'}}>
             <div className="row border-bottom">
                 <div className="col-12 px-4">
                     <div className="row py-4  justify-content-between">

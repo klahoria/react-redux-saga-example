@@ -1,0 +1,12 @@
+.mw-50 {
+    max-width: 50px;
+}
+
+.mh-50 {
+    max-height: 50px;
+    min-height: 50px;
+}
+
+.card_finance_options_block {
+    max-height: calc(100vh - 53px - 1rem);
+}

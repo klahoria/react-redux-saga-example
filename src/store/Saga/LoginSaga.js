@@ -9,7 +9,6 @@ function* login(action) {
         // Assuming the response structure has a 'data' property
         if (Number(response.data.is_error) === 0) {
             yield put({ type: "LOGIN", payload: response.data });
-            console.log(response)
             yield put({type: 'get_settings',payload: {access_token: response.data.profile[0].access_token}});
         }
         else {

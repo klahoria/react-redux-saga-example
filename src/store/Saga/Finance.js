@@ -3,10 +3,8 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import axios from '../../utils/axios';
 
 function* Finance(action) {
-  console.warn(action,"finance")
-  
   try {
-    const response = yield call(axios.post, action.type, axios.payload);
+    const response = yield call(axios.post, action.type, action.payload);
 
     // Assuming the response structure has a 'data' property
     yield put({type:"GETFINANCINGSTATUS",payload:response.data});

@@ -8,3 +8,8 @@
 .bg-none {
   background-color: transparent !important;
 }
+
+.slide-up-animation {
+  transition: all 0.7s linear;
+  transform: translateY(-100vh);
+}

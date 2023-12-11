@@ -8,6 +8,7 @@ import Navbar from './components/Navbar/Navbar';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import MultiOptoinPage from './components/MultiOptionPage/MultiOptoinPage';
 import BaseRoute from './components/BaseRoute/BaseRoute';
+import Finance from './components/Finance/Finance';
 
 function App() {
 
@@ -65,11 +66,11 @@ function App() {
           <Navbar />
         </div>
         <div className="flex-grow-1">
-          <MultiOptoinPage />
-          {/* <Routes>
+          <Routes>
             <Route path='/' element={<Navigate to="/app/finance-customer" replace={true} />} />
-            <Route path={'/app/finance-customer'} element={<MultiOptoinPage />} />
-          </Routes> */}
+            <Route path={'/app/finance-customer'} exact={true} element={<MultiOptoinPage />} />
+            <Route path={'/app/finance'} exact element={<Finance />} />
+          </Routes>
         </div>
       </div>
     </div>
