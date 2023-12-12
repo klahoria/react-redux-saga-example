@@ -22,7 +22,12 @@ function Finance() {
             desc: `Allows you to finance customers with deferred interest for the first 12 months. Customers can pay off the entire amount within the deferred duration(initial 12 months) to enjoy no interest fees on their contracts.
             Any remaining balanc after 12 months will incur the standard EZ Financing interest rates on the Payment Plan Amount and will be converted into monthly installments like any contract under this payment plan.`,
             bold: ['after 12 months', 'first 12 months', 'no interest fees'],
-            height: 240
+            height: 240,
+            offer: {
+                title: 'LIMITED TIME DEAL!',
+                plantype: "EZ with Deferred Interest",
+                color: ["#DB7600", "#545454"]
+            }
         },
         {
             type: 3,
@@ -36,7 +41,7 @@ function Finance() {
     ])
 
 
- 
+
 
     return (
         <div className='container-fluid h-100'>
@@ -50,7 +55,7 @@ function Finance() {
                             <FinanceNav />
                             {/* block choose finance */}
                             <div className="card_block overflow-hidden select_finance_type h-100 row card_finance_options_block justify-content-center align-items-center align-content-center">
-                               <FinanceType cards={cards}/>
+                                <FinanceType cards={cards} />
                             </div>
                         </div>
                         <div className="col-5 border"></div>

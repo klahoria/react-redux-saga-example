@@ -13,3 +13,7 @@
   transition: all 0.7s linear;
   transform: translateY(-100vh);
 }
+
+.fs-12 {
+  font-size: 12px;
+}

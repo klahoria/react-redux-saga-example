@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react'
 import './cardFinance.css'
+import clsx from 'clsx';
 
-function CardFinanceType({ type, title, subText, img, desc, bold, height, click }) {
+function CardFinanceType({ type, title, subText, img, desc, bold, height, click, offer }) {
 
     const ref = useRef()
     const cref = useRef()
@@ -35,8 +36,12 @@ function CardFinanceType({ type, title, subText, img, desc, bold, height, click 
     }
 
     return (
-        <div ref={cref} className="border rounded-3 px-4 py-4 mb-4 card_finance" role='button' key={type} onMouseOver={() => mouseOver(height)} onMouseLeave={handleMouseLeave} onClick={click}>
-            <div className="d-flex align-items-center">
+        <div ref={cref} className="border rounded-3 px-4 py-4 mb-4 card_finance position-relative" role='button' key={type} onMouseOver={() => mouseOver(height)} onMouseLeave={handleMouseLeave} onClick={click}>
+            {offer && <div className="d-flex align-items-center justify-content-between position-absolute top-0 start-0 w-100 px-4" style={{ backgroundColor: (offer.bgColor || "#fbbc0436") }}>
+                <span className='fs-12 fw-bold p-1' style={{ color: offer.color[0] }}>{offer.title.toUpperCase()}</span>
+                <span className='fs-12 fw-bold p-1' style={{ color: offer.color[1] }}>{offer.plantype}</span>
+            </div>}
+            <div className={clsx("d-flex align-items-center", { 'mt-2': offer })}>
                 <img src={img} alt="" />
                 <div className='px-3'>
                     <p className="fs-4 fw-semibold mb-0">{title}</p>
