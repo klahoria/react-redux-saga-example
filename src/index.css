@@ -2,6 +2,7 @@
   --nav-bg: #050B13;
   --nav-text: #A8B7C6;
   --nav-bg-light: #93c5fd80;
+  --input-text: #7A848D;
 }
 
 
@@ -16,4 +17,13 @@
 
 .fs-12 {
   font-size: 12px;
+}
+
+.mw-366 {
+  max-width: 366px;
+}
+
+.mw-200 {
+  max-width: 200px;
+  min-width: unset;
 }

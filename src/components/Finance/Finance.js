@@ -2,9 +2,12 @@ import React, { useRef, useState } from 'react'
 import './Finance.css'
 import FinanceNav from './Nav/FinanecNav'
 import FinanceType from './FinanceType/FinanceType'
+import Services from './Services/Services';
 
 function Finance() {
 
+    const [viewMode, setViewMode] = useState('choosePlan');
+    // const [cards, setFinanceCard] = useState([]);
     const [cards, setFinanceCard] = useState([
         {
             type: 2,
@@ -40,7 +43,9 @@ function Finance() {
         }
     ])
 
-
+    function handleunMount() {
+        setViewMode(prev => 'services')
+    }
 
 
     return (
@@ -55,7 +60,10 @@ function Finance() {
                             <FinanceNav />
                             {/* block choose finance */}
                             <div className="card_block overflow-hidden select_finance_type h-100 row card_finance_options_block justify-content-center align-items-center align-content-center">
-                                <FinanceType cards={cards} />
+
+                                {viewMode == 'choosePlan' && <FinanceType cards={cards} onUnmount={handleunMount} />}
+                                {viewMode == 'services' && <Services cards={cards} onUnmount={handleunMount} />}
+
                             </div>
                         </div>
                         <div className="col-5 border"></div>
