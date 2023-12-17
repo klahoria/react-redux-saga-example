@@ -1,8 +1,10 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './Finance.css'
 import FinanceNav from './Nav/FinanecNav'
 import FinanceType from './FinanceType/FinanceType'
 import Services from './Services/Services';
+import Plans from './Plans/Plans';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Finance() {
 
@@ -43,10 +45,18 @@ function Finance() {
         }
     ])
 
-    function handleunMount() {
-        setViewMode(prev => 'services')
+    function handleunMount(nextStep) {
+        setViewMode(prev => nextStep)
     }
 
+    const data = useSelector(data => data.Finance)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        if (data && data.financeProcess && data.financeProcess.planType) {
+            setViewMode('services')
+        }
+    }, [data])
 
     return (
         <div className='container-fluid h-100'>
@@ -61,8 +71,9 @@ function Finance() {
                             {/* block choose finance */}
                             <div className="card_block select_finance_type h-100 row card_finance_options_block justify-content-center align-items-center align-content-center">
 
-                                {viewMode == 'choosePlan' && <FinanceType cards={cards} onUnmount={handleunMount} />}
-                                {viewMode == 'services' && <Services cards={cards} onUnmount={handleunMount} />}
+                                {viewMode == 'choosePlan' && <FinanceType dispatch={dispatch} cards={cards} onUnmount={handleunMount} />}
+                                {viewMode == 'services' && <Services dispatch={dispatch} cards={cards} onUnmount={handleunMount} />}
+                                {viewMode == 'plans' && <Plans dispatch={dispatch} cards={cards} onUnmount={handleunMount} />}
 
                             </div>
                         </div>

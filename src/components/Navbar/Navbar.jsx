@@ -61,11 +61,11 @@ function NavLinks({ login }) {
     }
 
     return (
-        <div className="nav_menu" key={Math.random() * 8} >
+        <div className="nav_menu">
             {login && login.map((item) => {
                 // return JSON.stringify(item)
                 return (Number(item.only_path) !== 1 &&
-                    <ListGroup role='button' key={item.url} defaultActiveKey={location.pathname} className={clsx('rounded-2 nav_link_text', { 'active_link rounded-2': (item.link === location.pathname || (checkThisLink(item.link) && showThisMenu(item.submenu) && item.submenu)), "px-3 py-3 nav_link_text": !item.submenu })} onClick={() => handleNavigate(item)}>
+                    <ListGroup role='button' key={item.menu_id} defaultActiveKey={location.pathname} className={clsx('rounded-2 nav_link_text', { 'active_link rounded-2': (item.link === location.pathname || (checkThisLink(item.link) && showThisMenu(item.submenu) && item.submenu)), "px-3 py-3 nav_link_text": !item.submenu })} onClick={() => handleNavigate(item)}>
                         <div to={item.link}
                             className={clsx("nav-link", { "px-3 py-3 nav_link_text rounded-1": item.submenu })} >
                             {/* <i className={item.icon ? ('fa fa-' + (item.icon.split('_').length > 0 ? item.icon.split('_')[item.icon.split('_').length - 1] : item.icon.split('_')[0])) : ''}></i> */}

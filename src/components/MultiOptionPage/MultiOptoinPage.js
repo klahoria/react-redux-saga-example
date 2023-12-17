@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { CiBellOn } from "react-icons/ci";
 import './MultiOption.css'
 import { useNavigate } from 'react-router-dom';
-import { Finance } from '../../store/Actions/Finance';
+import { Finance } from '../../store/Actions/FinanceActions';
 
 function MultiOptoinPage() {
 

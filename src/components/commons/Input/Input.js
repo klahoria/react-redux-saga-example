@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import './Input.css';
 import clsx from 'clsx';
 
-export default function Input({ className, name, label, type, required = 1, id, currency, controller }) {
+export default function Input({ className, name, label, type, required = 1, id, currency, controller,autofocus,readOnly }) {
     const inputRef = useRef();
     const inputBoxRef = useRef();
 
@@ -15,7 +15,7 @@ export default function Input({ className, name, label, type, required = 1, id, 
         }
     }
     function handleBlur() {
-        if (currency) {
+        if (currency && inputRef.current.querySelector('input').value) {
             let value_arr = inputRef.current.querySelector('input').value.split('.');
             if (value_arr.length > 0 && value_arr[0] == '') {
                 value_arr[0] = String('0');
@@ -88,7 +88,7 @@ export default function Input({ className, name, label, type, required = 1, id, 
 
     return (
         <div className={clsx("group position-relative " + className)} ref={inputRef}>
-            <input type={type} required={required} className={'border-0 outline-0 ' + className} id={id} onFocus={() => handleFocus()} onBlur={() => handleBlur()} onKeyDown={(e) => handleInput(e)} {...controller} />
+            <input type={type} required={required} className={'border-0 outline-0 ' + className} id={id} {...controller} onFocus={() => handleFocus()} onBlur={() => handleBlur()} onKeyDown={(e) => handleInput(e)}  autoFocus={autofocus} />
             {currency && <span className='fw-bold position-absolute currency d-none'>
                 {getCurrencySymbol(currency.toUpperCase() || "USD")}
             </span>}

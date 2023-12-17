@@ -1,9 +1,11 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import CardFinanceType from '../CardFinanceType/CardFinanceType';
 // import { useSpring, animated } from 'react-spring';
 import { animated, useSpring } from '@react-spring/web'
+import { useDispatch } from 'react-redux';
+import { chooseFinanceType } from '../../../store/Actions/FinanceActions';
 
-function FinanceType({ cards, onUnmount }) {
+function FinanceType({ cards, onUnmount, dispatch }) {
     const cardRef = useRef();
 
     function handleClickCard() {
@@ -21,17 +23,20 @@ function FinanceType({ cards, onUnmount }) {
             if (!isVisible) {
                 setShouldUnmount(true);
                 setTimeout(() => {
-                    onUnmount();
+                    onUnmount('services');
                 }, 500); // Adjust the delay as needed
             }
         },
     });
 
-
     if (shouldUnmount) {
         return null;
     }
 
+    function savePlanType(data) {
+        dispatch(chooseFinanceType({ payload: { planType: data } }))
+        setIsVisible(prev => false)
+    }
 
     return (
         <animated.div style={slideUpAnimation} className="col-12 mb-md-5 pb-5 cars_scroll" ref={cardRef}>
@@ -39,7 +44,7 @@ function FinanceType({ cards, onUnmount }) {
                 <h3 className="">Choose the financing option</h3>
             </div>
             <div className="col-md-8 col-12 mx-auto">
-                {cards && Array.from(cards).map((card, index) => <CardFinanceType {...card} key={Math.random() * index} click={() => setIsVisible(prev => false)} />)}
+                {cards && Array.from(cards).map((card, index) => <CardFinanceType {...card} key={Math.random() * index} click={(data) => savePlanType(data)} />)}
             </div>
         </animated.div>
     )

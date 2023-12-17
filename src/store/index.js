@@ -4,7 +4,7 @@ import createSagaMiddleware from 'redux-saga';
 import counterReducer from './Reducers/Reducer';
 import GetSettings from './Reducers/SettingsReducer';
 import Login from './Reducers/Login';
-import Finance from './Reducers/Finance';
+import Finance from './Reducers/FinanceReducers';
 import storage from 'redux-persist/lib/storage';
 import { persistStore, persistReducer } from 'redux-persist';
 import rootSaga from './Saga/index';
