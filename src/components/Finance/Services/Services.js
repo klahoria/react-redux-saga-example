@@ -8,17 +8,24 @@ import clsx from 'clsx';
 
 function Services() {
 
-    const { control, register } = useForm();
+    const { register, control, handleSubmit, reset, trigger, setError } = useForm({
+        defaultValues: {}
+    });
     const { fields, append, prepend, remove, swap, move, insert } = useFieldArray({
         control, // control props comes from useForm (optional: if you are using FormContext)
         name: "services", // unique name for your Field Array
     });
 
 
-    useEffect(() => {
-        append({ serviceName: '', price: "" })
-    }, [])
+    const methods = useForm();
 
+    useEffect(() => {
+        append({ serviceName: '', price: '' });
+    }, [append]);
+
+    const onSubmit = (data) => {
+        console.log(data.services);
+    };
     return (
         <div className='h-100'>
             <div className="mx-auto" style={{ maxWidth: '615px' }}>
@@ -33,14 +40,10 @@ function Services() {
                     </h1>
                 </div>
 
-                <form onSubmit={(data) => {
-                    window.event.preventDefault();
-                    console.log(fields)
-
-                }}>
+                <form onSubmit={handleSubmit(data=>console.log(data))}>
                     {fields.map((field, index) => (
                         <ServiceBlock extra={clsx("mt-3", { "mt-5": index == 0 || fields.length == 1 })} key={field.id} // important to include key with field's id
-                            price={register(`services.${index}.price`)} serviceName={`services.${index}.serviceName`} priceName={`services.${index}.price`} service={register(`services.${index}.serviceName`)} showAdd={(fields.length - 1) == index}
+                            price={{ ...register(`services.${index}.price`) }} serviceName={`services.${index}.serviceName`} priceName={`services.${index}.price`} service={{ ...register(`services.${index}.serviceName`) }} showAdd={(fields.length - 1) == index}
                             remove={() => remove(index)} add={() => append({ serviceName: '', price: "" })}
                             showRemove={fields.length > 0}
                         />
@@ -56,7 +59,7 @@ function Services() {
                     </div>
 
                     <div className="py-3 mt-5">
-                        <button className="btn btn-primary py-2 mh-56 px-4 fw-medium">Continue</button>
+                        <input className="btn btn-primary py-2 mh-56 px-4 fw-medium" type='submit' calue="Countinue" />
                     </div>
                 </form>
             </div >
@@ -86,3 +89,50 @@ function ServiceBlock({ extra, showAdd, price, service, remove, add, showRemove,
             <div className="clearfix"></div>
         </div></>
 }
+
+
+
+
+// import { useForm, useFieldArray } from "react-hook-form";
+
+// export default function Services() {
+//     const { register, control, handleSubmit, reset, trigger, setError } = useForm({
+//         // defaultValues: {}; you can populate the fields by this attribute
+//     });
+//     const { fields, append, remove } = useFieldArray({
+//         control,
+//         name: "test"
+//     });
+
+//     return (
+//         <form onSubmit={handleSubmit(data => console.log(data))}>
+//             <ul>
+//                 {fields.map((item, index) => (
+//                     <li key={item.id}>
+//                         <input {...register(`test.${index}.firstName`)} />
+//                         {/* <Controller
+//               render={({ field }) => <input {...field} />}
+//               name={`test.${index}.lastName`}
+//               control={control}
+//             /> */}
+
+
+
+
+
+
+
+//                         <button type="button" onClick={() => remove(index)}>Delete</button>
+//                     </li>
+//                 ))}
+//             </ul>
+//             <button
+//                 type="button"
+//                 onClick={() => append({ firstName: "bill", lastName: "luo" })}
+//             >
+//                 append
+//             </button>
+//             <input type="submit" />
+//         </form>
+//     );
+// }
