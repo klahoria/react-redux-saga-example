@@ -8,17 +8,17 @@
   max-height: 56px;
 }
 
-input {
+.group>input {
   background: none;
-  color: black,var(--input-text);
+  color: black, var(--input-text);
   padding: 12px 10px 10px 5px;
   display: block;
   min-width: 320px;
   border: none;
   font-weight: 600;
-  font-size: 18px !important;
-
-  /* border-radius: 0; */
+  font-size: 18px;
+  outline: 0px;
+    /* border-radius: 0; */
 }
 
 .currency {
@@ -26,28 +26,28 @@ input {
 }
 
 .currency {
-  top:4px;
-  left:10px;
+  top: 4px;
+  left: 10px;
   transform: translateY(65%);
 }
 
-input:focus {
+.group>.group>input:focus {
   outline: none;
 }
 
-input:focus~label,
-input:valid~label {
+.group>input:focus~.input_label,
+.group>input:valid~.input_label {
   top: -8px;
   left: 10px;
   font-size: 14px;
   /* color: #2196F3; */
 }
 
-input:focus~.bar:before {
+.group>input:focus~.bar:before {
   width: 320px;
 }
 
-label {
+.input_label {
   color: var(--input-text);
   font-size: 14px;
   font-weight: normal;
@@ -129,6 +129,6 @@ label {
   margin: 50px 0;
 }
 
-input:focus~.group {
+.group>input:focus~.group {
   border: 1px solid #7ace23 !important;
 }

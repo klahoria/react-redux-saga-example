@@ -32,7 +32,7 @@ function App() {
   }
 
   return (
-    <div className='container-fluid px-0 vh-100'>
+    <div className='container-fluid px-0 min-vh-100'>
       {/* <div className='d-flex h-100'>
         <div className=" px-0">
           <Navbar />
@@ -61,8 +61,9 @@ function App() {
         </div>
       </div> */}
 
-      <div className='d-flex h-100'>
-        <div className=" px-0">
+      <div className='d-flex min-vh-100'>
+        <div className=" px-0 d-sm-block d-none
+        ">
           <Navbar />
         </div>
         <div className="flex-grow-1">

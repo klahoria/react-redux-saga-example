@@ -25,5 +25,13 @@
 
 .mw-200 {
   max-width: 200px;
-  min-width: unset;
+  min-width: unset !important;
+}
+
+.min-vh-100 {
+  min-height: 100vh;
+}
+
+.mh-56 {
+  min-height: 56px;
 }

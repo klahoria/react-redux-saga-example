@@ -53,20 +53,20 @@ function Finance() {
             <div className="row h-100">
 
                 <div className="col-12 h-100 ">
-                    <div className="row h-100">
+                    <div className="row h-100 flex-wrap">
                         {/* Finance Block */}
-                        <div className="col-7 border h-100 p-3">
+                        <div className="col-md-7 col-12 h-100 p-3">
                             {/* finance block nav */}
                             <FinanceNav />
                             {/* block choose finance */}
-                            <div className="card_block overflow-hidden select_finance_type h-100 row card_finance_options_block justify-content-center align-items-center align-content-center">
+                            <div className="card_block select_finance_type h-100 row card_finance_options_block justify-content-center align-items-center align-content-center">
 
                                 {viewMode == 'choosePlan' && <FinanceType cards={cards} onUnmount={handleunMount} />}
                                 {viewMode == 'services' && <Services cards={cards} onUnmount={handleunMount} />}
 
                             </div>
                         </div>
-                        <div className="col-5 border"></div>
+                        <div className="col-md-5 col-12"></div>
                     </div>
                 </div>
 

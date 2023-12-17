@@ -30,16 +30,16 @@ function FinanceType({ cards, onUnmount }) {
 
     if (shouldUnmount) {
         return null;
-      }
-    
-    
+    }
+
+
     return (
-        <animated.div style={slideUpAnimation} className="col-12 mb-5 pb-5 cars_scroll" ref={cardRef}>
-            <div className="col-8 mb-4 mx-auto">
+        <animated.div style={slideUpAnimation} className="col-12 mb-md-5 pb-5 cars_scroll" ref={cardRef}>
+            <div className="col-md-8 col-12 mb-4 mx-auto">
                 <h3 className="">Choose the financing option</h3>
             </div>
-            <div className="col-8 mx-auto">
-                {cards && Array.from(cards).map(card => <CardFinanceType {...card} click={() => setIsVisible(prev => false)} />)}
+            <div className="col-md-8 col-12 mx-auto">
+                {cards && Array.from(cards).map((card, index) => <CardFinanceType {...card} key={Math.random() * index} click={() => setIsVisible(prev => false)} />)}
             </div>
         </animated.div>
     )
