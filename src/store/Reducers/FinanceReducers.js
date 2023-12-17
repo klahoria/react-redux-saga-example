@@ -4,7 +4,6 @@ const initialState = {
 };
 
 const Finance = (state = initialState, action) => {
-    console.log(action)
     switch (action.type) {
         case 'GETFINANCINGSTATUS':
             return { ...state, userFinanceStatus: action.payload };
